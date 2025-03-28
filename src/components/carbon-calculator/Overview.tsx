@@ -46,7 +46,7 @@ const Overview: React.FC<OverviewProps> = ({
       name: 'Voiture',
       distance: transportData.voiture,
       emissions: transportEmissions.voiture,
-      color: 'text-blue-400',
+      color: 'text-[#D2600F]',
       time: 'Ce mois',
       unit: 'km/mois'
     },
@@ -55,7 +55,7 @@ const Overview: React.FC<OverviewProps> = ({
       name: 'Avion',
       distance: transportData.avion,
       emissions: transportEmissions.avion,
-      color: 'text-purple-400',
+      color: 'text-[#2C3F42]',
       time: 'Cette année',
       unit: 'km/an'
     },
@@ -64,7 +64,7 @@ const Overview: React.FC<OverviewProps> = ({
       name: 'Transports en commun',
       distance: transportData.transportsCommun,
       emissions: transportEmissions.transportsCommun,
-      color: 'text-green-400',
+      color: 'text-[#C3CDC1]',
       time: 'Ce mois',
       unit: 'km/mois'
     },
@@ -73,7 +73,7 @@ const Overview: React.FC<OverviewProps> = ({
       name: 'Vélo',
       distance: 0,
       emissions: 0,
-      color: 'text-yellow-400',
+      color: 'text-[#D2600F]',
       time: 'Ce mois',
       unit: 'km/mois'
     }
@@ -86,9 +86,9 @@ const Overview: React.FC<OverviewProps> = ({
       className="space-y-6"
     >
       {/* Main CO2 Circle with Chart */}
-      <div className="bg-gray-800 p-6 rounded-xl">
+      <div className="bg-white p-6 rounded-xl shadow-lg">
         <div className="flex flex-col items-center">
-          <h3 className="text-xl font-semibold mb-6 text-gray-200">Votre Impact CO₂</h3>
+          <h3 className="text-xl font-semibold mb-6 text-[#2C3F42]">Votre Impact CO₂</h3>
           <div className="relative w-[200px] h-[200px]">
             <div className="absolute inset-0">
               <EmissionsChart data={chartData} />
@@ -101,19 +101,19 @@ const Overview: React.FC<OverviewProps> = ({
                 color={color.replace('text-', '').replace('400', '')}
               >
                 <div className="text-center">
-                  <div className="text-4xl font-bold mb-1">{total}</div>
-                  <div className="text-gray-400 text-sm">kg CO₂</div>
+                  <div className="text-4xl font-bold mb-1 text-[#2C3F42]">{total}</div>
+                  <div className="text-[#2C3F42]">kg CO₂</div>
                 </div>
               </ProgressCircle>
             </div>
           </div>
-          <p className="mt-4 text-gray-400">{message}</p>
+          <p className="mt-4 text-[#2C3F42]">{message}</p>
         </div>
       </div>
 
       {/* Recent Journeys */}
-      <div className="bg-gray-800 p-6 rounded-xl">
-        <h3 className="text-xl font-semibold mb-4 text-gray-200">Vos déplacements</h3>
+      <div className="bg-white p-6 rounded-xl shadow-lg">
+        <h3 className="text-xl font-semibold mb-4 text-[#2C3F42]">Vos déplacements</h3>
         <div className="space-y-4">
           {allTransports.map((transport, index) => (
             <motion.div
@@ -121,18 +121,18 @@ const Overview: React.FC<OverviewProps> = ({
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: index * 0.1 }}
-              className="flex items-center justify-between p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors"
+              className="flex items-center justify-between p-3 bg-[#FFF8F0] rounded-lg hover:bg-[#C3CDC1]/10 transition-colors"
             >
               <div className="flex items-center gap-3">
                 <Icon icon={transport.icon} className={`${transport.color} text-xl`} />
                 <div>
-                  <div className="font-medium">{transport.name}</div>
-                  <div className="text-sm text-gray-400">{transport.distance} {transport.unit}</div>
+                  <div className="font-medium text-[#2C3F42]">{transport.name}</div>
+                  <div className="text-sm text-[#2C3F42]/70">{transport.distance} {transport.unit}</div>
                 </div>
               </div>
               <div className="text-right">
                 <div className={`font-medium ${transport.color}`}>{transport.emissions.toFixed(1)} kg CO₂</div>
-                <div className="text-sm text-gray-400">{transport.time}</div>
+                <div className="text-sm text-[#2C3F42]/70">{transport.time}</div>
               </div>
             </motion.div>
           ))}
@@ -142,7 +142,7 @@ const Overview: React.FC<OverviewProps> = ({
       {/* Start Button */}
       <motion.button
         whileTap={{ scale: 0.95 }}
-        className="w-full bg-green-500 text-white py-4 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-green-600 transition-colors"
+        className="w-full bg-[#D2600F] text-[#FFF8F0] py-4 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-[#B8500E] transition-colors shadow-lg"
         onClick={onStart}
       >
         Commencer le questionnaire

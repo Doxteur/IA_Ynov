@@ -126,12 +126,12 @@ const EcoTasks: React.FC<EcoTasksProps> = ({ currentCO2, onCO2Update }) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-gray-800 rounded-xl p-6"
+      className="bg-white rounded-xl p-6 shadow-lg"
     >
-      <div className="flex items-center justify-between mb-6 sticky top-0 bg-gray-800 z-10">
+      <div className="flex items-center justify-between mb-6 sticky top-0 bg-white z-10">
         <div className="flex items-center gap-3">
-          <Icon icon={FaLeaf} className="text-[#49CB91] text-2xl" />
-          <h2 className="text-xl font-bold">Actions Écologiques</h2>
+          <Icon icon={FaLeaf} className="text-[#D2600F] text-2xl" />
+          <h2 className="text-xl font-bold text-[#2C3F42]">Actions Écologiques</h2>
         </div>
         <AnimatePresence>
           {totalReduction > 0 && (
@@ -139,7 +139,7 @@ const EcoTasks: React.FC<EcoTasksProps> = ({ currentCO2, onCO2Update }) => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              className="flex items-center gap-2 text-[#49CB91]"
+              className="flex items-center gap-2 text-[#D2600F]"
             >
               <Icon icon={FaArrowDown} />
               <span className="font-bold">{totalReduction} kg CO₂</span>
@@ -148,14 +148,14 @@ const EcoTasks: React.FC<EcoTasksProps> = ({ currentCO2, onCO2Update }) => {
         </AnimatePresence>
       </div>
 
-      <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-gray-700 scrollbar-thumb-[#49CB91] hover:scrollbar-thumb-[#3ba576]">
+      <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-track-[#C3CDC1] scrollbar-thumb-[#D2600F] hover:scrollbar-thumb-[#B8500E]">
         {tasks.map(task => (
           <motion.div
             key={task.id}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className={`bg-gray-700/50 rounded-xl p-4 backdrop-blur-sm transition-colors ${
-              task.completed ? 'bg-opacity-30' : ''
+            className={`bg-[#FFF8F0] rounded-xl p-4 backdrop-blur-sm transition-colors ${
+              task.completed ? 'bg-opacity-50' : ''
             }`}
           >
             <div className="flex items-start gap-4">
@@ -163,8 +163,8 @@ const EcoTasks: React.FC<EcoTasksProps> = ({ currentCO2, onCO2Update }) => {
                 onClick={() => toggleTask(task.id)}
                 className={`w-6 h-6 rounded-md border-2 flex items-center justify-center cursor-pointer transition-colors ${
                   task.completed
-                    ? 'border-[#49CB91] bg-[#49CB91]'
-                    : 'border-gray-400 hover:border-[#49CB91]'
+                    ? 'border-[#D2600F] bg-[#D2600F]'
+                    : 'border-[#C3CDC1] hover:border-[#D2600F]'
                 }`}
               >
                 {task.completed && <Icon icon={FaCheck} className="text-white text-sm" />}
@@ -172,23 +172,23 @@ const EcoTasks: React.FC<EcoTasksProps> = ({ currentCO2, onCO2Update }) => {
               <div className="flex-1">
                 <div className="flex justify-between items-start">
                   <h3 className={`font-medium mb-1 ${
-                    task.completed ? 'text-gray-400 line-through' : 'text-white'
+                    task.completed ? 'text-[#C3CDC1] line-through' : 'text-[#2C3F42]'
                   }`}>
                     {task.title}
                   </h3>
                   <span className={`text-sm ${
-                    task.completed ? 'text-[#49CB91]' : 'text-gray-400'
+                    task.completed ? 'text-[#D2600F]' : 'text-[#2C3F42]/70'
                   }`}>
                     -{task.co2Reduction} kg CO₂
                   </span>
                 </div>
                 <p className={`text-sm ${
-                  task.completed ? 'text-gray-500' : 'text-gray-400'
+                  task.completed ? 'text-[#C3CDC1]' : 'text-[#2C3F42]/70'
                 }`}>
                   {task.description}
                 </p>
                 <p className={`text-sm mt-2 ${
-                  task.completed ? 'text-gray-500' : 'text-[#49CB91]'
+                  task.completed ? 'text-[#C3CDC1]' : 'text-[#D2600F]'
                 }`}>
                   {task.impact}
                 </p>

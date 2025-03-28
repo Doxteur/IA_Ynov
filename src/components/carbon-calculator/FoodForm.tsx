@@ -20,14 +20,14 @@ const FoodForm: React.FC<FoodFormProps> = ({
   onBack,
   onNext
 }) => {
-  const inputs = [
+  const foodFields = [
     {
       icon: GiMeat,
       label: "Viande et poisson",
       field: "viande",
       placeholder: "Portions par semaine",
       value: formData.viande || '',
-      color: "bg-red-500",
+      color: "bg-[#D2600F]",
       description: "Nombre de portions hebdomadaires"
     },
     {
@@ -36,7 +36,7 @@ const FoodForm: React.FC<FoodFormProps> = ({
       field: "legumes",
       placeholder: "Portions par semaine",
       value: formData.legumes || '',
-      color: "bg-[#49CB91]",
+      color: "bg-[#C3CDC1]",
       description: "Nombre de portions hebdomadaires"
     }
   ];
@@ -46,51 +46,36 @@ const FoodForm: React.FC<FoodFormProps> = ({
   };
 
   return (
-    <div className="space-y-6">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gray-800 rounded-xl p-6"
-      >
-        <h2 className="text-2xl font-bold mb-2 text-center">Votre Alimentation</h2>
-        <p className="text-gray-400 text-center mb-6">Estimez votre consommation alimentaire hebdomadaire</p>
-
-        <div className="space-y-4">
-          {inputs.map((input) => (
-            <div key={input.field}>
-              <label className="block text-sm font-medium mb-1 text-gray-400">
-                {input.label}
-              </label>
-              <input
-                type="number"
-                className={`w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-${input.color} focus:border-transparent`}
-                placeholder={input.placeholder}
-                value={input.value}
-                onChange={(e) => handleInputChange(input.field, e.target.value)}
-              />
-              <p className="text-xs text-gray-400 mt-1">{input.description}</p>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-
-      <div className="flex justify-between">
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          className="bg-gray-700 text-white py-3 px-6 rounded-xl font-semibold flex items-center gap-2"
+    <div className="bg-[#FFF8F0] p-6 rounded-xl shadow-lg">
+      <h2 className="text-2xl font-semibold mb-6 text-[#2C3F42]">Alimentation</h2>
+      <div className="space-y-6">
+        {foodFields.map((field) => (
+          <div key={field.field} className="space-y-2">
+            <label className="text-[#2C3F42] block">{field.label}</label>
+            <input
+              type="number"
+              value={field.value}
+              onChange={(e) => handleInputChange(field.field, e.target.value)}
+              className="w-full p-3 rounded-lg bg-white text-[#2C3F42] border border-[#C3CDC1] focus:outline-none focus:ring-2 focus:ring-[#D2600F]"
+              placeholder={field.placeholder}
+            />
+            <p className="text-sm text-[#2C3F42] mt-1">{field.description}</p>
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-between mt-8">
+        <button
           onClick={onBack}
+          className="px-6 py-2 rounded-lg bg-[#C3CDC1] text-[#2C3F42] hover:bg-[#A5B0A3] transition-colors"
         >
-          <Icon icon={FaArrowLeft} />
           Retour
-        </motion.button>
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          className="bg-blue-600 text-white py-3 px-6 rounded-xl font-semibold flex items-center gap-2"
+        </button>
+        <button
           onClick={onNext}
+          className="px-6 py-2 rounded-lg bg-[#D2600F] text-[#FFF8F0] hover:bg-[#B8500E] transition-colors"
         >
           Terminer
-          <Icon icon={FaArrowRight} />
-        </motion.button>
+        </button>
       </div>
     </div>
   );

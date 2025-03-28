@@ -70,22 +70,22 @@ const CarbonCalculator = () => {
     {
       name: 'Voiture',
       value: formData.transport.voiture * 0.2,
-      color: '#60A5FA'
+      color: '#D2600F'
     },
     {
       name: 'Avion',
       value: formData.transport.avion * 0.285,
-      color: '#A78BFA'
+      color: '#2C3F42'
     },
     {
       name: 'Transports en commun',
       value: formData.transport.transportsCommun * 0.05,
-      color: '#4ADE80'
+      color: '#C3CDC1'
     },
     {
       name: 'Vélo',
       value: 0,
-      color: '#FBBF24'
+      color: '#8A9A87'
     }
   ];
 
@@ -145,7 +145,7 @@ const CarbonCalculator = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#1A2F44] text-white">
+    <div className="min-h-screen bg-[#FFF8F0] text-[#2C3F42]">
       <div className="container mx-auto p-4">
         <motion.h1
           className="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-3"
@@ -153,7 +153,7 @@ const CarbonCalculator = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 100 }}
         >
-          <Icon icon={FaLeaf} className="text-[#49CB91] text-4xl" />
+          <Icon icon={FaLeaf} className="text-[#D2600F] text-4xl" />
           <span>Mon Impact Carbone</span>
         </motion.h1>
 
