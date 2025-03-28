@@ -39,7 +39,7 @@ const TransportForm: React.FC<TransportFormProps> = ({
       field: "voiture",
       placeholder: "Kilomètres par mois",
       value: formData.voiture || '',
-      color: "bg-[#D2600F]",
+      color: "text-[#D2600F]",
       description: "Distance moyenne parcourue en voiture chaque mois",
       unit: "/mois"
     },
@@ -49,7 +49,7 @@ const TransportForm: React.FC<TransportFormProps> = ({
       field: "avion",
       placeholder: "Kilomètres par an",
       value: formData.avion || '',
-      color: "bg-[#2C3F42]",
+      color: "text-[#2C3F42]",
       description: "Distance totale parcourue en avion sur une année",
       unit: "/an"
     },
@@ -59,7 +59,7 @@ const TransportForm: React.FC<TransportFormProps> = ({
       field: "transportsCommun",
       placeholder: "Kilomètres par mois",
       value: formData.transportsCommun || '',
-      color: "bg-[#C3CDC1]",
+      color: "text-[#C3CDC1]",
       description: "Distance mensuelle en transports en commun",
       unit: "/mois"
     }
@@ -70,7 +70,7 @@ const TransportForm: React.FC<TransportFormProps> = ({
   };
 
   return (
-    <div className="bg-[#FFF8F0] p-6 rounded-xl shadow-lg">
+    <div className="bg-white p-6 rounded-xl shadow-lg">
       <h2 className="text-2xl font-semibold mb-6 text-[#2C3F42]">Transport</h2>
       <div className="space-y-6">
         {inputs.map((input, index) => (
@@ -81,7 +81,10 @@ const TransportForm: React.FC<TransportFormProps> = ({
             transition={{ delay: index * 0.1 }}
             className="space-y-2"
           >
-            <label className="text-[#2C3F42] block">{input.label}</label>
+            <div className="flex items-center gap-2">
+              <Icon icon={input.icon} className={`${input.color} text-xl`} />
+              <label className="text-[#2C3F42] block">{input.label}</label>
+            </div>
             <input
               type="number"
               value={input.value}

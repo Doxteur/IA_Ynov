@@ -27,7 +27,7 @@ const FoodForm: React.FC<FoodFormProps> = ({
       field: "viande",
       placeholder: "Portions par semaine",
       value: formData.viande || '',
-      color: "bg-[#D2600F]",
+      color: "text-[#D2600F]",
       description: "Nombre de portions hebdomadaires"
     },
     {
@@ -36,7 +36,7 @@ const FoodForm: React.FC<FoodFormProps> = ({
       field: "legumes",
       placeholder: "Portions par semaine",
       value: formData.legumes || '',
-      color: "bg-[#C3CDC1]",
+      color: "text-[#C3CDC1]",
       description: "Nombre de portions hebdomadaires"
     }
   ];
@@ -46,12 +46,15 @@ const FoodForm: React.FC<FoodFormProps> = ({
   };
 
   return (
-    <div className="bg-[#FFF8F0] p-6 rounded-xl shadow-lg">
+    <div className="bg-white p-6 rounded-xl shadow-lg">
       <h2 className="text-2xl font-semibold mb-6 text-[#2C3F42]">Alimentation</h2>
       <div className="space-y-6">
         {foodFields.map((field) => (
           <div key={field.field} className="space-y-2">
-            <label className="text-[#2C3F42] block">{field.label}</label>
+            <div className="flex items-center gap-2">
+              <Icon icon={field.icon} className={`${field.color} text-xl`} />
+              <label className="text-[#2C3F42] block">{field.label}</label>
+            </div>
             <input
               type="number"
               value={field.value}

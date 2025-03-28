@@ -38,7 +38,7 @@ const HouseForm: React.FC<HouseFormProps> = ({
       field: "electricite",
       placeholder: "Consommation en kWh",
       value: formData.electricite || '',
-      color: "bg-[#D2600F]",
+      color: "text-[#D2600F]",
       description: "Consommation mensuelle en kilowattheure",
       unit: "/mois"
     },
@@ -48,7 +48,7 @@ const HouseForm: React.FC<HouseFormProps> = ({
       field: "chauffage",
       placeholder: "Consommation en kWh",
       value: formData.chauffage || '',
-      color: "bg-[#2C3F42]",
+      color: "text-[#2C3F42]",
       description: "Consommation mensuelle de chauffage",
       unit: "/mois"
     }
@@ -59,12 +59,15 @@ const HouseForm: React.FC<HouseFormProps> = ({
   };
 
   return (
-    <div className="bg-[#FFF8F0] p-6 rounded-xl shadow-lg">
+    <div className="bg-white p-6 rounded-xl shadow-lg">
       <h2 className="text-2xl font-semibold mb-6 text-[#2C3F42]">Maison</h2>
       <div className="space-y-6">
         {inputs.map((input) => (
           <div key={input.field} className="space-y-2">
-            <label className="text-[#2C3F42] block">{input.label}</label>
+            <div className="flex items-center gap-2">
+              <Icon icon={input.icon} className={`${input.color} text-xl`} />
+              <label className="text-[#2C3F42] block">{input.label}</label>
+            </div>
             <input
               type="number"
               value={input.value}
